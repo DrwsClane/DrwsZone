@@ -1,12 +1,299 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DrwsZone</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrwsZone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #fffaf5;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 107, 0, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      color: white;
+      z-index: 1000;
+      transition: 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 107, 0, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 1.6em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: #ffe3cc;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    /* Hero Section */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    #home {
+      background: linear-gradient(135deg, #ff9a3d, #ff6b00);
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    #home h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+
+    #home p {
+      font-size: 1.2em;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    #home button {
+      margin-top: 1.5em;
+      padding: 12px 30px;
+      font-size: 1em;
+      color: #ff6b00;
+      background-color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    #home button:hover {
+      background-color: #ff6b00;
+      color: white;
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+    }
+
+    /* Tentang Section */
+    #tentang {
+      background-color: white;
+      color: #333;
+    }
+
+    #tentang h2 {
+      font-size: 2em;
+      color: #ff6b00;
+      margin-bottom: 1em;
+    }
+
+    #tentang p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* Produk Section */
+    #produk {
+      background-color: #fff1e0;
+    }
+
+    #produk h2 {
+      color: #ff6b00;
+      margin-bottom: 1em;
+      font-size: 2em;
+    }
+
+    .produk-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .produk-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .produk-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+    }
+
+    .produk-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .produk-item h3 {
+      color: #ff6b00;
+      margin-bottom: 5px;
+    }
+
+    /* Kontak */
+    #kontak {
+      background: white;
+    }
+
+    #kontak h2 {
+      color: #ff6b00;
+      margin-bottom: 0.5em;
+    }
+
+    #kontak p {
+      color: #444;
+      margin-bottom: 1em;
+    }
+
+    .sosmed {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .sosmed a {
+      text-decoration: none;
+      color: white;
+      background: #ff6b00;
+      padding: 10px 18px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .sosmed a:hover {
+      background: #ff4500;
+      box-shadow: 0 0 10px rgba(255,107,0,0.5);
+    }
+
+    footer {
+      background: #ff6b00;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 20px; }
+      #home h1 { font-size: 2.3em; }
+      .menu { display: none; }
+      .produk-list { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
+
+  <nav id="navbar">
+    <div class="logo">DrwsZone</div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#produk">Produk</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </nav>
+
+  <section id="home">
     <h1>Selamat Datang di DrwsZone</h1>
-    <p>Website modern untuk gaya hidup dan rumah Anda.</p>
+    <p>Gaya hidup, inovasi, dan sentuhan modern untuk rumah dan keseharian Anda.  
+      Temukan inspirasi dari koleksi kami yang penuh warna dan energi positif!</p>
+    <button onclick="document.querySelector('#produk').scrollIntoView({behavior:'smooth'})">Lihat Produk</button>
+  </section>
+
+  <section id="tentang">
+    <h2>Tentang DrwsZone</h2>
+    <p>DrwsZone adalah brand yang lahir dari semangat untuk menghadirkan produk kreatif dan bergaya,  
+      menggabungkan unsur estetika dan fungsionalitas. Kami percaya bahwa setiap rumah  
+      bisa jadi cerminan gaya hidup modern yang hangat dan penuh inspirasi.</p>
+  </section>
+
+  <section id="produk">
+    <h2>Produk Pilihan</h2>
+    <div class="produk-list">
+      <div class="produk-item">
+        <img src="https://source.unsplash.com/250x180/?home,interior" alt="Produk 1">
+        <h3>Smart Lamp</h3>
+        <p>Lampu pintar dengan desain minimalis dan kontrol sentuh.</p>
+      </div>
+      <div class="produk-item">
+        <img src="https://source.unsplash.com/250x180/?decor,room" alt="Produk 2">
+        <h3>Wall Decor</h3>
+        <p>Hiasan dinding estetik untuk ruang tamu Anda.</p>
+      </div>
+      <div class="produk-item">
+        <img src="https://source.unsplash.com/250x180/?kitchen,tools" alt="Produk 3">
+        <h3>Kitchen Tools</h3>
+        <p>Peralatan dapur modern dan fungsional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak">
+    <h2>Hubungi Kami</h2>
+    <p>Ingin kerja sama atau tanya produk? Silakan hubungi kami melalui media sosial berikut:</p>
+    <div class="sosmed">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Email</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 DrwsZone — Creative Home & Lifestyle.
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
 </body>
 </html>
