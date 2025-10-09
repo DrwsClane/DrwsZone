@@ -3,251 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DrwsZone | Street Style & Otomotif Lifestyle</title>
+  <title>DrwsZone</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      background: #1c1c1c;
-      color: white;
-      overflow-x: hidden;
     }
 
-    header {
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(255,123,0,0.95), rgba(255,180,77,0.9)),
+                  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.8);
-      position: sticky;
-      top: 0;
-    }
-
-    header h1 {
-      font-size: 24px;
-      color: #ff6a00;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff6a00;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
       text-align: center;
-      padding: 120px 20px;
-      background: url('https://images.unsplash.com/photo-1558981001-b3378cddb09a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      overflow-x: hidden;
       position: relative;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h2 {
-      font-size: 42px;
-      font-weight: 700;
+    h1 {
+      font-size: 3em;
       margin-bottom: 10px;
-      color: #ff6a00;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
     }
 
-    .hero p {
-      font-size: 18px;
-      color: #f0f0f0;
+    p {
+      font-size: 1.2em;
       margin-bottom: 30px;
+      max-width: 650px;
+      line-height: 1.6;
+      animation: fadeIn 2s ease;
     }
 
-    .btn {
-      background: #ff6a00;
-      border: none;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: 0.3s;
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 2s ease;
     }
 
-    .btn:hover {
-      background: #ffa733;
-    }
-
-    /* ===== PRODUK ===== */
-    .products {
-      padding: 80px 20px;
-      background: #111;
-      text-align: center;
-    }
-
-    .products h2 {
-      color: #ff6a00;
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .product {
-      background: #222;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(255, 106, 0, 0.3);
-    }
-
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product h3 {
-      color: #ff6a00;
-      margin: 15px 0 5px;
-    }
-
-    .product p {
-      color: #ccc;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    /* ===== ABOUT ===== */
-    .about {
-      background: #1e1e1e;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .about h2 {
-      color: #ff6a00;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.8;
-      color: #ddd;
-      font-size: 16px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 30px 20px;
-      color: #bbb;
-      font-size: 14px;
-    }
-
-    .social {
-      margin-bottom: 10px;
-    }
-
-    .social a {
-      color: #ff6a00;
+    a {
       text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
+      color: #fff;
+      background: rgba(0,0,0,0.25);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
       transition: 0.3s;
     }
 
-    .social a:hover {
-      color: white;
+    a:hover {
+      background: #fff;
+      color: #ff7b00;
+      transform: scale(1.07);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9em;
+      opacity: 0.85;
+      animation: fadeIn 3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; padding: 0 10px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>DrwsZone</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#products">Shop</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <h1>Selamat Datang di <span style="color:#fff;">DrwsZone</span></h1>
+  <p>Website modern untuk gaya hidup dan rumah Anda.<br>
+     Temukan inspirasi dekorasi, produk kreatif, dan ide menarik setiap hari.</p>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Street Style Meets Home</h2>
-      <p>Perpaduan gaya otomotif dan lifestyle modern. Temukan produk terbaik untuk keseharian penuh energi.</p>
-      <button class="btn">Shop Now</button>
-    </div>
-  </section>
+  <div class="buttons">
+    <a href="https://wa.me/62895332789552" target="_blank">Chat via WhatsApp</a>
+    <a href="https://www.instagram.com/larf.zone" target="_blank">Instagram @larf.zone</a>
+  </div>
 
-  <section id="products" class="products">
-    <h2>Produk Unggulan</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1616627458753-ff6e0b86f5a0?auto=format&fit=crop&w=800&q=80" alt="Helm Keren">
-        <h3>Drws Helmet Pro</h3>
-        <p>Desain aerodinamis, ringan, dan stylish untuk pengendara modern.</p>
-        <button class="btn">Lihat Detail</button>
-      </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1597009191619-1b1c5b7c18d8?auto=format&fit=crop&w=800&q=80" alt="Jaket Street">
-        <h3>Street Jacket X</h3>
-        <p>Tampilan bold dengan bahan kuat, cocok untuk jalanan perkotaan.</p>
-        <button class="btn">Lihat Detail</button>
-      </div>
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1610375521319-d4b6b79833df?auto=format&fit=crop&w=800&q=80" alt="Aksesori Rumah">
-        <h3>Home Gear Vibe</h3>
-        <p>Sentuhan gaya otomotif untuk interior rumah yang energik.</p>
-        <button class="btn">Lihat Detail</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h2>Tentang DrwsZone</h2>
-    <p>
-      DrwsZone lahir dari semangat jalanan dan gaya hidup modern.  
-      Kami percaya setiap orang punya energi unik untuk mengekspresikan diri,  
-      baik lewat gaya berpakaian maupun suasana rumahnya.  
-      Visi kami adalah menghadirkan produk yang memadukan <b>street style</b> dan <b>fungsionalitas</b> dalam satu zona inspiratif.
-    </p>
-  </section>
-
-  <footer id="contact">
-    <div class="social">
-      <a href="#">Instagram</a> |
-      <a href="#">TikTok</a> |
-      <a href="#">Email</a>
-    </div>
-    © 2025 DrwsZone. All rights reserved.
-  </footer>
+  <footer>© 2025 DrwsZone. All rights reserved.</footer>
 </body>
 </html>
